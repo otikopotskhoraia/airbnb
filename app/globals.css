@@ -29,9 +29,36 @@ body,
 }
 
 .slick-dots {
-  bottom: 0px !important;
+  bottom: 12px !important;
 }
 
 .slick-slide img {
   position: relative !important;
+}
+.slick-slide  div {
+  height: 100%;
+}
+
+.slick-prev {
+  z-index: 1;
+  left: 0px !important;
+}
+
+.slick-next {
+  z-index: 1;
+  right: 10px !important;
+}
+
+.slick-arrow:before {
+  font-size: 30px !important;
+}
+
+.slick-dots li button:before {
+  color: rgb(179, 178, 178) !important;
+  font-size: 10px !important;
+  margin-top: 10px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: white !important;
 }
