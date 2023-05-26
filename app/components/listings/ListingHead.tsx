@@ -1,5 +1,9 @@
 'use client';
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import Image from "next/image";
 
 import useCountries from "@/app/hooks/useCountries";
@@ -11,10 +15,19 @@ import HeartButton from "../HeartButton";
 interface ListingHeadProps {
   title: string;
   locationValue: string;
-  imageSrc: string;
+  imageSrc: string[];
   id: string;
   currentUser?: SafeUser | null
 }
+
+const settings = {
+  infinite: true,
+  dots: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 5000,
+};
 
 const ListingHead: React.FC<ListingHeadProps> = ({
   title,
@@ -41,12 +54,18 @@ const ListingHead: React.FC<ListingHeadProps> = ({
           relative
         "
       >
-        <Image
-          src={imageSrc}
-          fill
-          className="object-cover w-full"
-          alt="Image"
-        />
+        <Slider {...settings}>
+            {imageSrc.map((item, idx) => (
+                <div key={idx}>
+                <Image
+                 src={item}
+                 fill
+                 className="object-cover w-full"
+                 alt="Image"
+               />
+                </div>
+            ))}
+        </Slider>
         <div
           className="
             absolute
